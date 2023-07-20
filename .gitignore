@@ -1,0 +1,16 @@
+## outputfiles
+*.out
+
+## debug files
+.vscode/
+*.dSYM
+
+## library files
+*.a
+
+## tester file
+client
+server
+
+## ignore files
+*.o
