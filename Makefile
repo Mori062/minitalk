@@ -22,10 +22,6 @@ SERVER_OBJS = $(SERVER_SRCS:.c=.o)
 
 all: $(NAME_CLIENT) $(NAME_SERVER)
 
-bonus:
-	rm -f $(NAME_CLIENT) $(NAME_SERVER)
-	make BONUS=1
-
 $(NAME_CLIENT): $(CLIENT_OBJS)
 	@ make -C $(LIBFT_PATH)
 	@ $(CC) $(CFLAGS) -I $(INCS) $(LIBFT) -o $(NAME_CLIENT) $(CLIENT_OBJS)

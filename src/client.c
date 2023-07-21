@@ -6,12 +6,12 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 11:56:12 by morishitash       #+#    #+#             */
-/*   Updated: 2023/07/21 04:05:54 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/07/21 12:17:44 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/include/libft.h"
 #include "../include/minitalk.h"
+#include "../libft/include/libft.h"
 
 int	g_ack = STANDBY;
 
@@ -21,7 +21,6 @@ static int	client_error_msg(void)
 	ft_putendl_fd(" Usage: ./client [PID] [message]\033[0m", 2);
 	return (1);
 }
-
 
 static int	msg_error(void)
 {
@@ -35,15 +34,7 @@ static void	signal_handler(int sig)
 	if (sig == SIGUSR1)
 		g_ack = STANDBY;
 	else
-		exit (msg_error());
-}
-
-static void	signal_handler(int sig)
-{
-	if (sig == SIGUSR1)
-		g_ack = STANDBY;
-	else
-		exit (msg_error());
+		exit(msg_error());
 }
 
 static void	send_char(int pid, char str)
@@ -57,12 +48,12 @@ static void	send_char(int pid, char str)
 		if ((str & (0x01 << i)) != 0)
 		{
 			if (kill(pid, SIGUSR1) == -1)
-				exit (msg_error());
+				exit(msg_error());
 		}
 		else
 		{
 			if (kill(pid, SIGUSR2) == -1)
-				exit (msg_error());
+				exit(msg_error());
 		}
 		usleep(50);
 		i++;
